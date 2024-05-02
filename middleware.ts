@@ -1,8 +1,10 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, ClerkMiddlewareOptions } from "@clerk/nextjs/server";
 
-export default clerkMiddleware({
-  // publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe'],
-});
+const clerkMiddlewareOptions: ClerkMiddlewareOptions = {
+  publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+};
+
+export default clerkMiddleware(clerkMiddlewareOptions);
 
 export const config = {
   matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
