@@ -1,11 +1,26 @@
-import { clerkMiddleware, ClerkMiddlewareOptions } from "@clerk/nextjs/server";
+import { clerkMiddleware } from '@clerk/nextjs/server';
 
-const clerkMiddlewareOptions: ClerkMiddlewareOptions = {
-  publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-};
-
-export default clerkMiddleware(clerkMiddlewareOptions);
+// Make sure that the `/api/webhooks/(.*)` route is not protected here
+export default clerkMiddleware()
 
 export const config = {
-  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+  matcher: [ '/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
 };
+
+// import {
+//   clerkMiddleware,
+//   createRouteMatcher
+// } from '@clerk/nextjs/server';
+
+// const isProtectedRoute = createRouteMatcher([
+//   '/api/webhooks/clerk',
+//   '/api/webhooks/stripe',
+// ]);
+
+// export default clerkMiddleware((auth, req) => {
+//   if (isProtectedRoute(req)) auth().protect();
+// });
+
+// export const config = {
+//   matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+// };
