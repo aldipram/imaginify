@@ -17,7 +17,7 @@ import { formUrlQuery } from "@/lib/utils";
 import { Button } from "../ui/button";
 
 import { Search } from "./Search";
-import { IImage } from "@/lib/database/models/image.modal";
+import { Images } from "@/lib/database/models/image.modal";
 
 export const Collection = ({
   hasSearch = false,
@@ -25,7 +25,7 @@ export const Collection = ({
   totalPages = 1,
   page,
 }: {
-  images: IImage[];
+  images: Images[];
   totalPages?: number;
   page: number;
   hasSearch?: boolean;
@@ -94,7 +94,7 @@ export const Collection = ({
   );
 };
 
-const Card = ({ image }: { image: IImage }) => {
+const Card = ({ image }: { image: Images }) => {
   return (
     <li>
       <Link href={`/transformations/${image._id}`} className="collection-card">
