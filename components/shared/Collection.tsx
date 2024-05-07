@@ -12,12 +12,12 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { transformationTypes } from "@/constants";
-import { IImage } from "@/lib/database/models/image.model";
 import { formUrlQuery } from "@/lib/utils";
 
 import { Button } from "../ui/button";
 
 import { Search } from "./Search";
+import { IImage } from "@/lib/database/models/image.modal";
 
 export const Collection = ({
   hasSearch = false,
